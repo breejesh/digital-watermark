@@ -64,7 +64,7 @@ def mean_neighbour(img, x, y):
     i = x - 1
     j = y
     if i >= 0 and i < IMG_HEIGHT and j >= 0 and j < IMG_WIDTH:
-        val += img[i, j]
+        val = val + img[i, j]
         num += 1
     i = x
     j = y - 1
@@ -82,13 +82,13 @@ master_img = np.zeros((WATERMARK_WIDTH, WATERMARK_HEIGHT, 1), np.uint8)
 owner_img = np.zeros((WATERMARK_WIDTH, WATERMARK_HEIGHT, 1), np.uint8)
 
 random.seed(a=KEY)
-random_points = random.sample(xrange(IMG_SIZE), WATERMARK_SIZE)
+random_points = random.sample(range(IMG_SIZE), WATERMARK_SIZE)
 
 i = 0
 j = 0
 
 for k in random_points:
-    x = k / IMG_WIDTH
+    x = k // IMG_WIDTH
     y = k % IMG_WIDTH
     if mean_neighbour(og_img, x, y) > THRESH:
         master_img[i,j] = 255

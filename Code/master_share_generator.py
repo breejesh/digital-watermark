@@ -65,7 +65,7 @@ def mean_neighbour(img, x, y):
     return val/float(num)
 
 random.seed(a=KEY)
-random_points = random.sample(xrange(IMG_SIZE), WATERMARK_SIZE)
+random_points = random.sample(range(IMG_SIZE), WATERMARK_SIZE)
 
 for cnt in range(0, 7):
     og_img = cv2.imread('images\stolen_images\stolen_image_'+str(cnt)+'.jpg',0)
@@ -77,7 +77,7 @@ for cnt in range(0, 7):
     j = 0
 
     for k in random_points:
-        x = k / IMG_WIDTH
+        x = k // IMG_WIDTH
         y = k % IMG_WIDTH
         if mean_neighbour(og_img, x, y) > THRESH:
             master_img[i,j] = 255
@@ -87,6 +87,6 @@ for cnt in range(0, 7):
             i += 1
 
     cv2.imwrite('images\master_images\master_img_'+str(cnt)+'.jpg', master_img)
-    print cnt
+    print (cnt)
 
-print "Done"
+print ("Done")

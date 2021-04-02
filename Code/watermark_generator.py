@@ -24,7 +24,7 @@ def xor(x ,y):
         return 0
 
 random.seed(a=KEY)
-random_points = random.sample(xrange(IMG_SIZE), WATERMARK_SIZE)
+random_points = random.sample(range(IMG_SIZE), WATERMARK_SIZE)
 
 owner_img = cv2.imread('images\owner_img.jpg', 0)
 
@@ -47,5 +47,5 @@ for k in range(0, 7):
     watermark_img = (255-watermark_img)
 
     cv2.imwrite('images\\regenerated_watermarks\\watermark_img_'+str(k)+'.jpg', watermark_img)
-    print k
-print "Done"
+    print (k)
+print ("Done")
